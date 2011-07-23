@@ -7,9 +7,9 @@ open Prefs
 
 let max_iter = 200
 (* the most number of placements we keep *)
-let keep_at_most = 7
+let keep_at_most = 30
 (* we throw away anything that has ml_ratio below keep_factor times (best ml_ratio) *)
-let keep_factor = 0.01
+let keep_factor = 1e-5
 let log_keep_factor = log keep_factor
 
 (* the second stage tolerance for branch length optimization. modify in online

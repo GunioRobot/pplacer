@@ -20,6 +20,7 @@ let command_list () =
 
     "classification", [
       "classify", (fun () -> new Guppy_classify.cmd ());
+      "bf", (fun () -> new Guppy_bf.cmd ());
     ];
 
     "utilities", [
