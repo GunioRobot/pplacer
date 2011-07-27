@@ -187,3 +187,7 @@ let count_entries_by_rank td =
       a.(rk) <- a.(rk) + 1)
     td.tax_name_map;
   a
+
+let compare_classif td x y =
+  let rank_of = get_tax_rank td in
+  (rank_of x) - (rank_of y)

@@ -93,6 +93,18 @@ let classify how criterion n_ranks td pr f mrca_map =
       invalid_arg
         ((Placerun.get_name pr)^" contains unclassified queries!")
 
+let edgemap_of_rp rp =
+  let st = (Refpkg.get_ref_tree rp).Gtree.stree
+  and mrcam = Refpkg.get_mrcam rp in
+  let edge_list = Stree.node_ids st in
+  let edge_map = List.fold_left
+    (fun accum edge -> IntMap.add edge [edge] accum)
+    IntMap.empty
+    edge_list
+  in
+  let mrca_edges = Map_seq.mrca_map_seq_map edge_map mrcam st in
+  IntMap.map IntSet.of_list mrca_edges
+
 
 (* UI-related *)
 
